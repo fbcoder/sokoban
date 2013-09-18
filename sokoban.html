@@ -90,7 +90,7 @@
                 
                 this.moveDown = function(){
                     if(handleMove(Direction.Down)){
-                            this.y += 1
+                            this.y += 1;
                             moves += 1;
                     }
                     this.d = Direction.Down;	
@@ -129,7 +129,7 @@
             }
             
             function addStep(px,py,pd,cm,cx,cy,cd){
-                if(step.length == maxSteps){
+                if(step.length === maxSteps){
                     step.shift();
                 }
                 step.push(new stepObject(px,py,pd,cm,cx,cy,cd));
@@ -245,7 +245,7 @@
                 //alert(map[0][0])				
                 for(yDif = -1; yDif <= 1; yDif++){
                     for(xDif = -1; xDif <= 1; xDif++){
-                        if(!(yDif == 0 && xDif == 0)){
+                        if(!(yDif === 0 && xDif === 0)){
                             newX = x + xDif;
                             newY = y + yDif;
                             if(newX >= 0 && newX <= xMax){
@@ -264,14 +264,14 @@
             
             function removeWalls(map){
                 //alert(map)
-                xMax = level[currentLevel].levelWidth - 1
-                yMax = level[currentLevel].levelHeight - 1
-                xMin = 0
-                yMin = 0
+                xMax = level[currentLevel].levelWidth - 1;
+                yMax = level[currentLevel].levelHeight - 1;
+                xMin = 0;
+                yMin = 0;
                 for(i=0;i<=yMax;i++){
                     for(j=0;j<=xMax;j++){
                         if(bordersWallsOnly(map,j,i,xMax,yMax)){
-                            map[i][j] = Tile.None
+                            map[i][j] = Tile.None;
                         }
                     }
                 }	
@@ -346,14 +346,14 @@
                 placedCrates = 0;
                 for(i=0;i<level[currentLevel].levelHeight;i++){			
                     for(j=0;j<level[currentLevel].levelWidth;j++){
-                        if(levelMap[i][j] == Tile.Crate){
-                            if(level[currentLevel].levelMapOrig[i][j] == Tile.Slot){
+                        if(levelMap[i][j] === Tile.Crate){
+                            if(level[currentLevel].levelMapOrig[i][j] === Tile.Slot){
                                 placedCrates += 1;
                             }	
                         }
                     }
                 }				
-                if(placedCrates == level[currentLevel].cratesToPlace){
+                if(placedCrates === level[currentLevel].cratesToPlace){
                     if((currentLevel + 1) < level.length){
                         alert("Level " + (currentLevel + 1) + " completed. Well Done. Ready for the next Level?");
                         gotoNextLevel();
@@ -408,10 +408,10 @@
                         break;
                     default:
                         context.drawImage(mapTiles[Tile.Empty].canvas,x*tileXSize,y*tileYSize);
-                        if(level[currentLevel].levelMapOrig[y][x] == Tile.Slot){
+                        if(level[currentLevel].levelMapOrig[y][x] === Tile.Slot){
                             drawCircle(x*tileXSize + 16, y*tileYSize + 16, 7, "#FF0000");
                         }
-                        if(level[currentLevel].levelMapOrig[y][x] == Tile.Start){
+                        if(level[currentLevel].levelMapOrig[y][x] === Tile.Start){
                             drawCircle(x*tileXSize + 16, y*tileYSize + 16, 7, "#00FF00");
                         }
                     break;
@@ -436,8 +436,8 @@
                     break;
                 }
                 if(levelMap[player.y + ydif][player.x + xdif] != Tile.Wall){
-                    if(levelMap[player.y + ydif][player.x + xdif] == Tile.Crate){
-                        if(levelMap[player.y + (ydif * 2)][player.x + (xdif * 2)] == Tile.Empty){
+                    if(levelMap[player.y + ydif][player.x + xdif] === Tile.Crate){
+                        if(levelMap[player.y + (ydif * 2)][player.x + (xdif * 2)] === Tile.Empty){
                             levelMap[player.y + ydif][player.x + xdif] = Tile.Empty;
                             levelMap[player.y + (ydif * 2)][player.x + (xdif * 2)] = Tile.Crate;
                             addStep(player.x, player.y, player.d, true, player.x + (xdif * 2), player.y + (ydif * 2),moveDir);
@@ -454,15 +454,16 @@
                                     
             document.onkeypress = function(e){
                 var thisEvent = e;
+                // add support for webkit key events
                 switch(thisEvent.keyCode){
                     case 38: player.moveUp(); break;	
                     case 37: player.moveLeft(); break;
                     case 39: player.moveRight(); break;
                     case 40: player.moveDown(); break;
                     case 0:
-                        if(thisEvent.charCode == 114){
+                        if(thisEvent.charCode === 114){
                             resetLevel();
-                        } else if (thisEvent.charCode == 117) {
+                        } else if (thisEvent.charCode === 117) {
                             undoMove();
                         }
                     break;
@@ -510,7 +511,7 @@
                 helpDiv.style.height = (canvas.height - 30) + "px";
             }
             
-            function showHelp(){				
+            function showHelp(){
                 var helpDiv = document.getElementById("help");
                 //alert (helpDiv.style.);
                 helpDiv.style.display = "block";
@@ -634,7 +635,7 @@
                 <p>
                     <strong>Movement : </strong>arrow keys<br/>
                     <strong>Restart : </strong>r<br/>
-                    <strong>Undo : </strong>u
+                    <strong>Undo : </strong>
                 </p>
                 <p>
                     <em>Click to hide this popup</em>
