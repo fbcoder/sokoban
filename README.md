@@ -2,13 +2,14 @@
 This is just a clone of the popular crate pushing game sokoban.
 
 ## Controls
-Arrow keys to move
+* Move : Arrow keys
+* Undo move: u
+* Reset level: r
 
 ## Browser
 Mainly tested in Firefox, but I intend to support multiple browsers. Sometimes I also test with Chromium.
 
 ## TODO
-* Respond to arrow keys in webkit.
 * Align interface, different fonts and colors.
 * More levels.
 
